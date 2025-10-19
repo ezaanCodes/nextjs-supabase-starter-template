@@ -8,11 +8,17 @@ import { toast } from "sonner"
 import client from '@/api/client'
 
 const Signup = () => {
-    const handleSignup = async (e) => {
+    const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     
-        const email = e.target[0]?.value
-        const password = e.target[1]?.value
+        const form = e.currentTarget;
+        const formElements = form.elements as typeof form.elements & {
+            email: HTMLInputElement;
+            password: HTMLInputElement;
+        };
+        
+        const email = formElements.email.value;
+        const password = formElements.password.value;
 
         console.log(email, password)
         if (!email || !password) {
