@@ -3,11 +3,10 @@
 import React, { createContext, ReactNode, useEffect, useState, useContext } from 'react'
 import client from '@/api/client'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type User = any
+import { User } from '@supabase/supabase-js'
 
 interface AuthContextType {
-    user: User
+    user: User | null | undefined
     loading: boolean
 }
 
